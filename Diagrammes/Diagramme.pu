@@ -1,0 +1,70 @@
+@startuml
+left to right direction
+
+actor Client
+actor Admin
+
+usecase "Créer un compte" as UC1
+usecase "S'authentifier" as UC2
+usecase "Rechercher un film" as UC3
+usecase "Lister les films" as UC4
+usecase "Réserver une place" as UC5
+usecase "Payer (carte bancaire)" as UC6
+usecase "Annuler réservation" as UC7
+usecase "Ajouter un film à la liste To Watch" as UC8
+
+usecase "Ajouter un film" as UC9
+usecase "Affecter un film à une salle" as UC10
+usecase "Ajouter une salle" as UC11
+usecase "Supprimer une salle" as UC12
+usecase "Supprimer un film d'une salle" as UC13
+usecase "Ajouter une place réservée" as UC14
+usecase "Rendre une place disponible" as UC15
+
+usecase "Traiter les paiements" as UC16
+usecase "Valider les transactions" as UC17
+
+usecase "Notifier l'utilisateur" as UC18
+usecase "Envoyer des rappels de séances" as UC19
+
+Client --> UC1
+Client --> UC2
+Client --> UC3
+Client --> UC4
+Client --> UC5
+Client --> UC6
+Client --> UC7
+Client --> UC8
+
+Admin -|> Client 
+
+Admin --> UC9
+Admin --> UC10
+Admin --> UC11
+Admin --> UC12
+Admin --> UC13
+Admin --> UC14
+Admin --> UC15
+
+rectangle "Système de Paiement" as PaymentSystem
+rectangle "Système de Notification" as NotificationSystem
+
+PaymentSystem --> UC16
+PaymentSystem --> UC17
+
+NotificationSystem --> UC18
+NotificationSystem --> UC19
+
+UC5 -->> UC2 : "<<includes>>"
+UC6 -->> UC2 : "<<includes>>"
+UC7 -->> UC2 : "<<includes>>"
+UC8 -->> UC2 : "<<includes>>"
+UC9 -->> UC2 : "<<includes>>"
+UC10 -->> UC2 : "<<includes>>"
+UC11 -->> UC2 : "<<includes>>"
+UC12 -->> UC2 : "<<includes>>"
+UC13 -->> UC2 : "<<includes>>"
+UC14 -->> UC2 : "<<includes>>"
+UC15 -->> UC2 : "<<includes>>"
+
+@enduml
